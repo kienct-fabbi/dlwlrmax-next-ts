@@ -2,15 +2,12 @@ import React, { useRef } from 'react'
 import { useEffect } from 'react';
 import useWindowSize from '../hooks/useWindowsSize'
 import styles from '../styles/scroll.module.scss'
+import { SCROLL_CONFIG } from '../util/Interfaces'
+
 type Props = {
 	children: JSX.Element;
 }
-interface SCROLL_CONFIG {
-	ease: number,
-	current: number,
-	previous: number,
-	rounded: number
-}
+
 export default function PageLayout({ children }: Props): JSX.Element {
 	const size = useWindowSize();
 	const scrollContainer = useRef<HTMLDivElement | null>(null);
