@@ -37,7 +37,7 @@ export default function PageLayout({ children }: Props): JSX.Element {
   }, []);
 
   return (
-    <div className={styles.app}>
+    <div className={styles.App}>
       <div ref={scrollContainer} className={styles.scroll}>
         {children}
       </div>
