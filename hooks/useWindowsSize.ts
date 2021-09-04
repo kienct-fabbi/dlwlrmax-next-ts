@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
-interface WINDOWS_SIZE {
-  width: number | undefined;
-  height: number | undefined;
-}
+import { WINDOWS_SIZE } from '../util/Interfaces';
 // Hook
 export default function useWindowSize(): WINDOWS_SIZE {
   // Initialize state with undefined width/height so server and client renders match
