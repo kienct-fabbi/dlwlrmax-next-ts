@@ -8,3 +8,7 @@ export interface SCROLL_CONFIG {
   previous: number;
   rounded: number;
 }
+export interface MOUSE_POSITION {
+  x: number;
+  y: number;
+}

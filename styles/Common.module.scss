@@ -1,0 +1,25 @@
+@import 'base.scss';
+
+.App {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: translateZ(0);
+  z-index: 1;
+}
+.customMouse {
+  @include size(35px, 35px);
+  background: $pink;
+  position: fixed;
+  opacity: 0.8;
+  display: block;
+  z-index: 99;
+  border-radius: 50%;
+  border: 3px solid $black;
+  transform: translateZ(0);
+  z-index: 9999999;
+  pointer-events: none;
+}
