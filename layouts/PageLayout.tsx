@@ -1,14 +1,16 @@
 import React, { useRef } from 'react';
 import { useEffect } from 'react';
+import useMousePosition from '../hooks/useMousePosition';
 import useWindowSize from '../hooks/useWindowsSize';
-import styles from '../styles/scroll.module.scss';
-import { SCROLL_CONFIG } from '../util/Interfaces';
+import styles from '../styles/Common.module.scss';
+import { MOUSE_POSITION, SCROLL_CONFIG } from '../util/Interfaces';
 
 type Props = {
   children: JSX.Element;
 };
 
 export default function PageLayout({ children }: Props): JSX.Element {
+  //scroll variable
   const size = useWindowSize();
   const scrollContainer = useRef<HTMLDivElement | null>(null);
   const scrollConfig: SCROLL_CONFIG = {
@@ -17,6 +19,17 @@ export default function PageLayout({ children }: Props): JSX.Element {
     previous: 0,
     rounded: 0
   };
+  // mouse variable
+  const { x, y }: MOUSE_POSITION = useMousePosition();
+  const mouseEle = useRef<HTMLDivElement | null>(null);
+  //handle mouse
+  const mouseMove = (): void => {
+    if (mouseEle && mouseEle.current) {
+      mouseEle.current.style.top = y - 17 + 'px';
+      mouseEle.current.style.left = x - 17 + 'px';
+    }
+  };
+  //handle scrolling
   const scrolling = (): void => {
     if (scrollContainer && scrollContainer.current) {
       scrollConfig.current = window.scrollY;
@@ -24,8 +37,8 @@ export default function PageLayout({ children }: Props): JSX.Element {
       scrollConfig.rounded = Math.round(scrollConfig.previous * 100) / 100;
       //style for scroll
       scrollContainer.current.style.transform = `translateY(-${scrollConfig.rounded}px)`;
+      requestAnimationFrame(() => scrolling());
     }
-    requestAnimationFrame(() => scrolling());
   };
 
   useEffect(() => {
@@ -36,8 +49,13 @@ export default function PageLayout({ children }: Props): JSX.Element {
     requestAnimationFrame(() => scrolling());
   }, []);
 
+  useEffect(() => {
+    mouseMove();
+  }, [x, y]);
+
   return (
     <div className={styles.App}>
+      <div ref={mouseEle} className={styles.customMouse}></div>
       <div ref={scrollContainer} className={styles.scroll}>
         {children}
       </div>
