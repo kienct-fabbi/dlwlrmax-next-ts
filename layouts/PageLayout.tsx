@@ -35,7 +35,7 @@ export default function PageLayout({ children }: Props): JSX.Element {
       scrollConfig.previous += (scrollConfig.current - scrollConfig.previous) * scrollConfig.ease;
       scrollConfig.rounded = Math.round(scrollConfig.previous * 100) / 100;
       //style for scroll
-      scrollContainer.current.style.transform = `translateY(-${scrollConfig.rounded}px)`;
+      scrollContainer.current.style.transform = `translate3d(0px,-${scrollConfig.rounded}px,0px)`;
       requestAnimationFrame(() => scrolling());
     }
   };
