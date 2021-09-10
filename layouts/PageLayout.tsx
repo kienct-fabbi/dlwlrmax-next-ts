@@ -25,8 +25,7 @@ export default function PageLayout({ children }: Props): JSX.Element {
   //handle mouse
   const mouseMove = (): void => {
     if (mouseEle && mouseEle.current) {
-      mouseEle.current.style.top = y - 17 + 'px';
-      mouseEle.current.style.left = x - 17 + 'px';
+      mouseEle.current.style.transform = `translate3d(${x}px,${y}px,0)`;
     }
   };
   //handle scrolling
@@ -50,7 +49,9 @@ export default function PageLayout({ children }: Props): JSX.Element {
   }, []);
 
   useEffect(() => {
-    mouseMove();
+    requestAnimationFrame(() => {
+      mouseMove();
+    });
   }, [x, y]);
 
   return (
