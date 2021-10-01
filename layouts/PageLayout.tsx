@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { useEffect } from 'react';
-import useMousePosition from '../hooks/useMousePosition';
+import Mouse from '../components/Mouse';
 import useWindowSize from '../hooks/useWindowsSize';
 import styles from '../styles/Common.module.scss';
-import { MOUSE_POSITION, SCROLL_CONFIG } from '../util/Interfaces';
+import { SCROLL_CONFIG } from '../util/Interfaces';
 
 type Props = {
   children: JSX.Element;
@@ -19,15 +19,7 @@ export default function PageLayout({ children }: Props): JSX.Element {
     previous: 0,
     rounded: 0
   };
-  // mouse variable
-  const { x, y }: MOUSE_POSITION = useMousePosition();
-  const mouseEle = useRef<HTMLDivElement | null>(null);
-  //handle mouse
-  const mouseMove = (): void => {
-    if (mouseEle && mouseEle.current) {
-      mouseEle.current.style.transform = `translate3d(${x}px,${y}px,0)`;
-    }
-  };
+
   //handle scrolling
   const scrolling = (): void => {
     if (scrollContainer && scrollContainer.current) {
@@ -48,15 +40,9 @@ export default function PageLayout({ children }: Props): JSX.Element {
     requestAnimationFrame(() => scrolling());
   }, []);
 
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      mouseMove();
-    });
-  }, [x, y]);
-
   return (
     <div className={styles.App}>
-      <div ref={mouseEle} className={styles.customMouse}></div>
+      <Mouse />
       <div ref={scrollContainer} className={styles.scroll}>
         {children}
       </div>
