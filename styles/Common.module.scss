@@ -9,6 +9,7 @@
   overflow: hidden;
   transform: translateZ(0);
   z-index: 1;
+	background-color: $bg-color;
 }
 .customMouse {
   @include size(35px, 35px);
