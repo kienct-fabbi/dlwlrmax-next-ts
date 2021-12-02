@@ -19,10 +19,26 @@ export default function PageLayout({ children }: Props): JSX.Element {
     previous: 0,
     rounded: 0
   };
+  const isScrollable = useRef(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      isScrollable.current = true;
+      requestAnimationFrame(() => scrolling());
 
+      //remove scroll after scroll stop
+      setTimeout(function () {
+        isScrollable.current = false;
+        cancelAnimationFrame(requestAnimationFrame(() => scrolling()));
+      }, 1000);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   //handle scrolling
   const scrolling = (): void => {
-    if (scrollContainer && scrollContainer.current) {
+    console.log(isScrollable.current);
+    if (scrollContainer && scrollContainer.current && isScrollable.current) {
       scrollConfig.current = window.scrollY;
       scrollConfig.previous += (scrollConfig.current - scrollConfig.previous) * scrollConfig.ease;
       scrollConfig.rounded = Math.round(scrollConfig.previous * 100) / 100;
