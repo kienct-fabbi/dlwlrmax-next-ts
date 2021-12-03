@@ -19,7 +19,6 @@ export default function PageLayout({ children }: Props): JSX.Element {
     previous: 0,
     rounded: 0
   };
-
   //handle scrolling
   const scrolling = (): void => {
     if (scrollContainer && scrollContainer.current) {
@@ -28,16 +27,19 @@ export default function PageLayout({ children }: Props): JSX.Element {
       scrollConfig.rounded = Math.round(scrollConfig.previous * 100) / 100;
       //style for scroll
       scrollContainer.current.style.transform = `translate3d(0,-${scrollConfig.rounded}px,0)`;
-      requestAnimationFrame(() => scrolling());
+      requestScrolling();
     }
   };
 
+  const requestScrolling = (): number => {
+    return requestAnimationFrame(() => scrolling());
+  };
   useEffect(() => {
     document.body.style.height = scrollContainer.current?.getBoundingClientRect().height + 'px';
   }, [size.height]);
 
   useEffect(() => {
-    requestAnimationFrame(() => scrolling());
+    requestScrolling();
   }, []);
 
   return (

@@ -9,9 +9,14 @@ export default function Mouse(): JSX.Element {
   //handle mouse
   const mouseMove = (): void => {
     if (mouseEle && mouseEle.current) {
-      mouseEle.current.style.transform = `translate3d(${x}px,${y}px,0)`;
+      mouseEle.current.style.transform = `translate3d(${x - 10}px,${y - 10}px,0)`;
     }
   };
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      mouseMove();
+    });
+  }, []);
   useEffect(() => {
     requestAnimationFrame(() => {
       mouseMove();
