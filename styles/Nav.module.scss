@@ -1,0 +1,73 @@
+@import 'base';
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  @include flex-center();
+  .navText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 500px;
+    a {
+      font-size: 4rem;
+      font-weight: bold;
+      color: $black;
+      opacity: 0.8;
+      transition: 0.3s ease color;
+      &:first-child {
+        font-size: 6rem;
+        opacity: 1;
+      }
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+  .bgContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    & > div {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px;
+      img {
+        width: 60%;
+        height: 30%;
+        object-fit: cover;
+        border-radius: 3px;
+        @include smooth-shadow();
+      }
+      &:first-child {
+        & > img {
+          &:nth-child(2) {
+            transform: translate(20%, -15%);
+          }
+          &:nth-child(3) {
+            transform: translate(4%, -10%);
+          }
+        }
+      }
+      &:last-child {
+        & > img {
+          &:nth-child(2) {
+            transform: translate(-15%, 10%);
+          }
+          &:last-child {
+            height: 40%;
+            transform: translate(15%, 0);
+          }
+        }
+      }
+    }
+  }
+}

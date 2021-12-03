@@ -10,9 +10,6 @@ body {
 body {
   height: 100%;
 }
-* {
-  cursor: none;
-}
 main {
   max-width: 1700px;
   margin: auto;

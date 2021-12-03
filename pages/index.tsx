@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.scss';
 import ItemJewelry from '../components/ItemJewelry';
 import PageLayout from '../layouts/PageLayout';
 import Link from 'next/link';
+import Nav from '../components/Nav';
 const Home: NextPage = () => {
   return (
     <PageLayout>
@@ -15,13 +16,7 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
-          <section className={styles.header}>
-            <div className={styles.title}>
-              <img src="../img/8.jpg" />
-              <h1>J.estina</h1>
-            </div>
-            <p>- The song of my life -</p>
-          </section>
+          <Nav />
           <section className={styles.clothes}>
             <div className={styles.lImage}>
               <Link href="/clothes">
