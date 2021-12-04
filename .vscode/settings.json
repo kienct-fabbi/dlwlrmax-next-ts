@@ -8,5 +8,8 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "files.autoSave": "onFocusChange",
+  "editor.tabSize": 2,
+  "editor.cursorSmoothCaretAnimation": true
 }

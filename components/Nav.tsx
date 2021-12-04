@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from '../styles/Nav.module.scss';
+import { change } from '../redux/features/mouseStates';
+import { useDispatch } from 'react-redux';
 const NAV_TEXT = [
   {
     link: '#',
@@ -19,6 +21,24 @@ const NAV_TEXT = [
   }
 ];
 export default function Nav(): JSX.Element {
+  const dispatch = useDispatch();
+  const handleMouseOut = () => {
+    dispatch(change({ style: 'normal' }));
+  };
+  // FIXME: fix type and mouse when hover not response when scroll
+  const handleMouseEnter = (e: any) => {
+    const ele = e.currentTarget;
+    const width = (ele as HTMLDivElement).offsetWidth;
+    const height = (ele as HTMLDivElement).offsetHeight;
+    const offTop = (ele as HTMLDivElement).getBoundingClientRect().top;
+    const offLeft = (ele as HTMLDivElement).getBoundingClientRect().left;
+    // const translateX = (ele as HTMLDivElement).style.transform.replace(/([a-z])\w+[()]/g, '');
+    const newPosition = {
+      y: offTop + height / 2 - 25,
+      x: offLeft + width + 20
+    };
+    dispatch(change({ style: 'navHover', position: newPosition }));
+  };
   return (
     <section>
       <div className={styles.container}>
@@ -37,7 +57,14 @@ export default function Nav(): JSX.Element {
         <div className={styles.navText}>
           {NAV_TEXT.map((item, index) => {
             return (
-              <a style={{ transform: `translateX(${index * 20}px)` }} href={item.link} key={index}>
+              <a
+                onMouseEnter={(e) => {
+                  handleMouseEnter(e);
+                }}
+                onMouseLeave={handleMouseOut}
+                style={{ transform: `translateX(${index * 20}px)` }}
+                href={item.link}
+                key={index}>
                 {item.text}
               </a>
             );

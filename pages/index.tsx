@@ -6,6 +6,7 @@ import ItemJewelry from '../components/ItemJewelry';
 import PageLayout from '../layouts/PageLayout';
 import Link from 'next/link';
 import Nav from '../components/Nav';
+
 const Home: NextPage = () => {
   return (
     <PageLayout>
