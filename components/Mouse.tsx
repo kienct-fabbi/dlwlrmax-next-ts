@@ -1,30 +1,40 @@
 import React, { useEffect, useRef } from 'react';
 import useMousePosition from '../hooks/useMousePosition';
-import styles from '../styles/Common.module.scss';
+import styles from '../styles/Mouse.module.scss';
 import { MOUSE_POSITION } from '../util/Interfaces';
+import { useSelector, RootStateOrAny } from 'react-redux';
 export default function Mouse(): JSX.Element {
+  const mouseState = useSelector((state: RootStateOrAny) => state.mouseState);
   const mouseEle = useRef<HTMLDivElement | null>(null);
   // mouse variable
   const { x, y }: MOUSE_POSITION = useMousePosition();
-  //handle mouse
-  const mouseMove = (): void => {
-    if (mouseEle && mouseEle.current) {
-      mouseEle.current.style.transform = `translate3d(${x - 10}px,${y - 10}px,0)`;
-    }
-  };
+
   useEffect(() => {
     requestAnimationFrame(() => {
-      mouseMove();
+      handleMouseEvent();
     });
   }, []);
   useEffect(() => {
     requestAnimationFrame(() => {
-      mouseMove();
+      handleMouseEvent();
     });
   }, [x, y]);
+
+  const handleMouseEvent = () => {
+    if (mouseEle && mouseEle.current) {
+      switch (mouseState.style) {
+        case 'navHover':
+          mouseEle.current.style.transform = `translate3d(${mouseState.position.x}px,${mouseState.position.y}px,0)`;
+          break;
+        default:
+          mouseEle.current.style.transform = `translate3d(${x - 10}px,${y - 10}px,0)`;
+          break;
+      }
+    }
+  };
   return (
     <>
-      <div ref={mouseEle} className={styles.customMouse}></div>
+      <div ref={mouseEle} className={`${styles.customMouse} ${styles[mouseState.style]}`}></div>
     </>
   );
 }

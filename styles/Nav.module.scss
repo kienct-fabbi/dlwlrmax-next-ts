@@ -45,7 +45,6 @@
         height: 30%;
         object-fit: cover;
         border-radius: 3px;
-        @include smooth-shadow();
       }
       &:first-child {
         & > img {
