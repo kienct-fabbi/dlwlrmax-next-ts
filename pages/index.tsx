@@ -6,8 +6,13 @@ import ItemJewelry from '../components/ItemJewelry';
 import PageLayout from '../layouts/PageLayout';
 import Link from 'next/link';
 import Nav from '../components/Nav';
+import { useDispatch } from 'react-redux';
 
 const Home: NextPage = () => {
+  const dispatch = useDispatch();
+  const handleHoverClothes = () => {
+    dispatch({ state: 'linkHover', style: 'clothesHover' });
+  };
   return (
     <PageLayout>
       <div className={styles.home}>
@@ -21,7 +26,9 @@ const Home: NextPage = () => {
           <section className={styles.clothes}>
             <div className={styles.lImage}>
               <Link href="/clothes">
-                <a className={styles.title}>Clothes</a>
+                <a className={styles.title} onMouseEnter={handleHoverClothes}>
+                  Clothes
+                </a>
               </Link>
               <div className={styles.image}>
                 <div className={styles.illuTitle}>Clothes</div>
