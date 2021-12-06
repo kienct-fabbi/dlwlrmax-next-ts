@@ -22,7 +22,7 @@ export default function Mouse(): JSX.Element {
 
   const handleMouseEvent = () => {
     if (mouseEle && mouseEle.current) {
-      switch (mouseState.style) {
+      switch (mouseState.state) {
         case 'navHover':
           mouseEle.current.style.transform = `translate3d(${mouseState.position.x}px,${mouseState.position.y}px,0)`;
           break;
@@ -34,7 +34,7 @@ export default function Mouse(): JSX.Element {
   };
   return (
     <>
-      <div ref={mouseEle} className={`${styles.customMouse} ${styles[mouseState.style]}`}></div>
+      <div ref={mouseEle} className={`${styles.customMouse} ${styles[mouseState.state]}`}></div>
     </>
   );
 }
