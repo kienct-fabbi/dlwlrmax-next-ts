@@ -4,8 +4,6 @@ import Mouse from '../components/Mouse';
 import useWindowSize from '../hooks/useWindowsSize';
 import styles from '../styles/Common.module.scss';
 import { SCROLL_CONFIG } from '../util/Interfaces';
-import store from '../redux/store';
-import { Provider } from 'react-redux';
 
 type Props = {
   children: JSX.Element;
@@ -45,13 +43,11 @@ export default function PageLayout({ children }: Props): JSX.Element {
   }, []);
 
   return (
-    <Provider store={store}>
-      <div className={styles.App}>
-        <Mouse />
-        <div ref={scrollContainer} className={styles.scroll}>
-          {children}
-        </div>
+    <div className={styles.App}>
+      <Mouse />
+      <div ref={scrollContainer} className={styles.scroll}>
+        {children}
       </div>
-    </Provider>
+    </div>
   );
 }

@@ -12,6 +12,8 @@
   z-index: 9999999;
   pointer-events: none;
   transition: 0.2s ease all;
+  overflow: hidden;
+  @include flex();
   &.navHover {
     @include size(50px, 50px);
   }

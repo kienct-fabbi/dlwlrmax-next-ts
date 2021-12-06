@@ -3,7 +3,7 @@
 .home {
   min-height: 100vh;
   flex-direction: column;
-  @include flex-center();
+  @include flex();
   background-color: $bg-color;
   section {
     height: 100vh;
@@ -146,7 +146,7 @@
       width: 35%;
       height: 90%;
       margin-bottom: 3rem;
-      @include flex-center;
+      @include flex();
     }
   }
 }

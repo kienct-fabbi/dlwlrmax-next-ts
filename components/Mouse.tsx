@@ -3,6 +3,11 @@ import useMousePosition from '../hooks/useMousePosition';
 import styles from '../styles/Mouse.module.scss';
 import { MOUSE_POSITION } from '../util/Interfaces';
 import { useSelector, RootStateOrAny } from 'react-redux';
+import HomeIcon from './iconComponent/HomeIcon';
+import { AnimatePresence, motion } from 'framer-motion';
+import ClothesIcon from './iconComponent/ClothesIcon';
+import JewelryIcon from './iconComponent/JewelryIcon';
+import AboutIcon from './iconComponent/AboutIcon';
 export default function Mouse(): JSX.Element {
   const mouseState = useSelector((state: RootStateOrAny) => state.mouseState);
   const mouseEle = useRef<HTMLDivElement | null>(null);
@@ -22,7 +27,7 @@ export default function Mouse(): JSX.Element {
 
   const handleMouseEvent = () => {
     if (mouseEle && mouseEle.current) {
-      switch (mouseState.style) {
+      switch (mouseState.state) {
         case 'navHover':
           mouseEle.current.style.transform = `translate3d(${mouseState.position.x}px,${mouseState.position.y}px,0)`;
           break;
@@ -34,7 +39,49 @@ export default function Mouse(): JSX.Element {
   };
   return (
     <>
-      <div ref={mouseEle} className={`${styles.customMouse} ${styles[mouseState.style]}`}></div>
+      <div ref={mouseEle} className={`${styles.customMouse} ${styles[mouseState.state]}`}>
+        <AnimatePresence>
+          {mouseState.style === 'Dlwlrma' && (
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ type: 'spring', duration: 0.6 }}>
+              <HomeIcon />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {mouseState.style === 'Clothes' && (
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ type: 'spring', duration: 0.6 }}>
+              <ClothesIcon />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {mouseState.style === 'Jewelry' && (
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ type: 'spring', duration: 0.6 }}>
+              <JewelryIcon />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {mouseState.style === 'About us' && (
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ type: 'spring', duration: 0.6 }}>
+              <AboutIcon />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </>
   );
 }

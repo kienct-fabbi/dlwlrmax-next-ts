@@ -11,5 +11,6 @@
   },
   "files.autoSave": "onFocusChange",
   "editor.tabSize": 2,
-  "editor.cursorSmoothCaretAnimation": true
+  "editor.cursorSmoothCaretAnimation": true,
+  "cSpell.words": ["illu"]
 }

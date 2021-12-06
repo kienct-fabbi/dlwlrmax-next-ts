@@ -23,10 +23,9 @@ const NAV_TEXT = [
 export default function Nav(): JSX.Element {
   const dispatch = useDispatch();
   const handleMouseOut = () => {
-    dispatch(change({ style: 'normal' }));
+    dispatch(change({ state: 'normal', style: 'normal' }));
   };
-  // FIXME: fix type and mouse when hover not response when scroll
-  const handleMouseEnter = (e: any) => {
+  const handleMouseEnter = (e: React.MouseEvent) => {
     const ele = e.currentTarget;
     const width = (ele as HTMLDivElement).offsetWidth;
     const height = (ele as HTMLDivElement).offsetHeight;
@@ -37,7 +36,8 @@ export default function Nav(): JSX.Element {
       y: offTop + height / 2 - 25,
       x: offLeft + width + 20
     };
-    dispatch(change({ style: 'navHover', position: newPosition }));
+    const elementName = e.currentTarget.textContent;
+    dispatch(change({ state: 'navHover', position: newPosition, style: elementName }));
   };
   return (
     <section>
