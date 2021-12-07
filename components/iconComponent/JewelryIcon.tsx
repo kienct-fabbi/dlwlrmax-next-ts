@@ -9,7 +9,8 @@ export default function JewelryIcon(): JSX.Element {
       viewBox="0 0 112.46 122.88"
       fill="#202020"
       height="30px"
-      width="30px">
+      width="30px"
+    >
       <defs />
       <title>earrings</title>
       <path

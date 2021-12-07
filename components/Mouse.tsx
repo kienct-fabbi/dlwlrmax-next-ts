@@ -48,7 +48,8 @@ export default function Mouse(): JSX.Element {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <HomeIcon />
             </motion.div>
           )}
@@ -58,7 +59,8 @@ export default function Mouse(): JSX.Element {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <ClothesIcon />
             </motion.div>
           )}
@@ -68,7 +70,8 @@ export default function Mouse(): JSX.Element {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <JewelryIcon />
             </motion.div>
           )}
@@ -79,7 +82,8 @@ export default function Mouse(): JSX.Element {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <AboutIcon />
             </motion.div>
           )}

@@ -6,8 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "prettier --check .",
+    "format": "prettier --write .",
     "prepare": "husky install"
+  },
+  "husky": {
+    "hook": {
+      "pre-commit": "yarn format && git add ."
+    }
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",

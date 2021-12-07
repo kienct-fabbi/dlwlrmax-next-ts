@@ -64,7 +64,8 @@ export default function Nav(): JSX.Element {
                 onMouseLeave={handleMouseOut}
                 style={{ transform: `translateX(${index * 20}px)` }}
                 href={item.link}
-                key={index}>
+                key={index}
+              >
                 {item.text}
               </a>
             );

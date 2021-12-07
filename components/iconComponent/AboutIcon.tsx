@@ -9,7 +9,8 @@ export default function AboutIcon(): JSX.Element {
       fill="#202020"
       width="30px"
       height="30px"
-      viewBox="0 0 109.95 122.88">
+      viewBox="0 0 109.95 122.88"
+    >
       <title>about-me</title>
       <path
         className="cls-1"
