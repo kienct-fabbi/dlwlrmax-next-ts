@@ -8,6 +8,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import ClothesIcon from './iconComponent/ClothesIcon';
 import JewelryIcon from './iconComponent/JewelryIcon';
 import AboutIcon from './iconComponent/AboutIcon';
+
+//animation variant
+const nav_animation = {
+  initial: { opacity: 0, x: -100 },
+  animate: { opacity: 1, x: 0 },
+  transition: { type: 'spring', duration: 0.6 }
+};
 export default function Mouse(): JSX.Element {
   const mouseState = useSelector((state: RootStateOrAny) => state.mouseState);
   const mouseEle = useRef<HTMLDivElement | null>(null);
@@ -46,8 +53,9 @@ export default function Mouse(): JSX.Element {
         <AnimatePresence>
           {mouseState.style === 'Dlwlrma' && (
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
+              variants={nav_animation}
+              initial="initial"
+              animate="animate"
               transition={{ type: 'spring', duration: 0.6 }}
             >
               <HomeIcon />
@@ -57,8 +65,9 @@ export default function Mouse(): JSX.Element {
         <AnimatePresence>
           {mouseState.style === 'Clothes' && (
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
+              variants={nav_animation}
+              initial="initial"
+              animate="animate"
               transition={{ type: 'spring', duration: 0.6 }}
             >
               <ClothesIcon />
@@ -68,8 +77,9 @@ export default function Mouse(): JSX.Element {
         <AnimatePresence>
           {mouseState.style === 'Jewelry' && (
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
+              variants={nav_animation}
+              initial="initial"
+              animate="animate"
               transition={{ type: 'spring', duration: 0.6 }}
             >
               <JewelryIcon />
@@ -80,8 +90,9 @@ export default function Mouse(): JSX.Element {
         <AnimatePresence>
           {mouseState.style === 'About us' && (
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
+              variants={nav_animation}
+              initial="initial"
+              animate="animate"
               transition={{ type: 'spring', duration: 0.6 }}
             >
               <AboutIcon />
