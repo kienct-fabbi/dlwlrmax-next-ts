@@ -17,9 +17,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, []);
   return (
     <>
-      <Loader isLoading={isLoading} />
-
       <Provider store={store}>
+        <Loader isLoading={isLoading} />
         <Component {...pageProps} />
       </Provider>
     </>
