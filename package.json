@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "prettier --check .",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "prepublish": "husky --disable",
+    "postpublish": "husky --enable"
   },
   "husky": {
     "hook": {
