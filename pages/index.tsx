@@ -7,11 +7,23 @@ import PageLayout from '../layouts/PageLayout';
 import Link from 'next/link';
 import Nav from '../components/Nav';
 import { useDispatch } from 'react-redux';
-
+import { change } from '../redux/features/mouseStates';
 const Home: NextPage = () => {
   const dispatch = useDispatch();
-  const handleHoverClothes = () => {
-    dispatch({ state: 'linkHover', style: 'clothesHover' });
+  const handleHoverClothes = (e: React.MouseEvent) => {
+    const $element = e.currentTarget as HTMLDivElement;
+    const top = $element.getBoundingClientRect().top;
+    const left = $element.getBoundingClientRect().left;
+    const height = $element.offsetHeight;
+    const width = $element.offsetWidth;
+    const NEW_POSITION = {
+      y: top + height / 2 - 25,
+      x: left + width + 20
+    };
+    dispatch(change({ state: 'linkHover', style: 'clothesHover', position: NEW_POSITION }));
+  };
+  const handleLeaveClothes = () => {
+    dispatch(change({ state: 'normal', style: 'normal' }));
   };
   return (
     <PageLayout>
@@ -26,7 +38,11 @@ const Home: NextPage = () => {
           <section className={styles.clothes}>
             <div className={styles.lImage}>
               <Link href="/clothes">
-                <a className={styles.title} onMouseEnter={handleHoverClothes}>
+                <a
+                  className={styles.title}
+                  onMouseEnter={handleHoverClothes}
+                  onMouseLeave={handleLeaveClothes}
+                >
                   Clothes
                 </a>
               </Link>

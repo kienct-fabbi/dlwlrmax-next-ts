@@ -6,7 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "prettier --check .",
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "prepublish": "husky --disable",
+    "postpublish": "husky --enable"
+  },
+  "husky": {
+    "hook": {
+      "pre-commit": "yarn format && git add ."
+    }
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
@@ -25,7 +35,8 @@
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react": "^7.27.1",
+    "husky": "^7.0.0",
     "prettier": "^2.3.2",
     "typescript": "4.4.2"
   }

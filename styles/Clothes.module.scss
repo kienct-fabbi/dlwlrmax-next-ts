@@ -1,10 +1,10 @@
-@import "base.scss";
+@import 'base.scss';
 
-.showcase{
-	height: 100vh;
-	overflow: hidden;
-	display:flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	align-items: center;
+.showcase {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
