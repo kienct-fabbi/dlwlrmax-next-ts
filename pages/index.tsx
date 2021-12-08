@@ -41,8 +41,7 @@ const Home: NextPage = () => {
                 <a
                   className={styles.title}
                   onMouseEnter={handleHoverClothes}
-                  onMouseLeave={handleLeaveClothes}
-                >
+                  onMouseLeave={handleLeaveClothes}>
                   Clothes
                 </a>
               </Link>
