@@ -1,30 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Nav.module.scss';
 import { change } from '../redux/features/mouseStates';
-import { useDispatch } from 'react-redux';
-const NAV_TEXT = [
-  {
-    link: '#',
-    text: 'Dlwlrma'
-  },
-  {
-    link: '#',
-    text: 'Clothes'
-  },
-  {
-    link: '#',
-    text: 'Jewelry'
-  },
-  {
-    link: '#',
-    text: 'About us'
-  }
-];
+import { motion } from 'framer-motion';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import {
+  imageAnimation,
+  imageAnimationReverse,
+  NAV_TEXT,
+  imageContainer,
+  navTextContainer,
+  navTextAnimation
+} from '../util/variants/Nav';
 export default function Nav(): JSX.Element {
   const dispatch = useDispatch();
+  const isLoading = useSelector((state: RootStateOrAny) => state.loadingState.isLoading);
+  const [loading, setLoading] = useState<boolean>(true);
   const handleMouseOut = () => {
     dispatch(change({ state: 'normal', style: 'normal' }));
   };
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading]);
   const handleMouseEnter = (e: React.MouseEvent) => {
     const ele = e.currentTarget;
     const width = (ele as HTMLDivElement).offsetWidth;
@@ -43,34 +39,54 @@ export default function Nav(): JSX.Element {
     <section>
       <div className={styles.container}>
         <div className={styles.bgContainer}>
-          <div>
-            <img src="../img/1.jpeg" alt="image" />
-            <img src="../img/4.jpg" alt="image" />
-            <img src="../img/7.jpg" alt="image" />
-          </div>
-          <div>
-            <img src="../img/2.jpeg" alt="image" />
-            <img src="../img/5.jpg" alt="image" />
-            <img src="../img/E9I3Uk9VgAQDXzx.jpg" alt="image" />
-          </div>
+          <motion.div
+            variants={imageContainer}
+            custom={0.3}
+            initial="initial"
+            animate={!loading && 'animate'}
+          >
+            <motion.img variants={imageAnimation} src="../img/1.jpeg" alt="image" />
+            <motion.img variants={imageAnimation} src="../img/4.jpg" alt="image" />
+            <motion.img variants={imageAnimation} src="../img/7.jpg" alt="image" />
+          </motion.div>
+          <motion.div
+            custom={0.6}
+            variants={imageContainer}
+            initial="initial"
+            animate={!loading && 'animate'}
+          >
+            <motion.img
+              variants={imageAnimationReverse}
+              src="../img/E9I3Uk9VgAQDXzx.jpg"
+              alt="image"
+            />
+            <motion.img variants={imageAnimationReverse} src="../img/5.jpg" alt="image" />
+            <motion.img variants={imageAnimationReverse} src="../img/2.jpeg" alt="image" />
+          </motion.div>
         </div>
-        <div className={styles.navText}>
+        <motion.div
+          variants={navTextContainer}
+          initial="initial"
+          animate={!loading && 'animate'}
+          className={styles.navText}
+        >
           {NAV_TEXT.map((item, index) => {
             return (
-              <a
-                onMouseEnter={(e) => {
+              <motion.a
+                custom={index}
+                variants={navTextAnimation}
+                onMouseOver={(e) => {
                   handleMouseEnter(e);
                 }}
                 onMouseLeave={handleMouseOut}
-                style={{ transform: `translateX(${index * 20}px)` }}
                 href={item.link}
                 key={index}
               >
                 {item.text}
-              </a>
+              </motion.a>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
