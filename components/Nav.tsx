@@ -65,7 +65,8 @@ export default function Nav(): JSX.Element {
             variants={imageContainer}
             custom={0.3}
             initial="initial"
-            animate={!loading && 'animate'}>
+            animate={!loading && 'animate'}
+          >
             <motion.img
               onMouseOver={handleHoverImage}
               onMouseLeave={handleLeaveHoverImage}
@@ -80,7 +81,8 @@ export default function Nav(): JSX.Element {
             custom={0.6}
             variants={imageContainer}
             initial="initial"
-            animate={!loading && 'animate'}>
+            animate={!loading && 'animate'}
+          >
             <motion.img
               variants={imageAnimationReverse}
               src="../img/E9I3Uk9VgAQDXzx.jpg"
@@ -94,7 +96,8 @@ export default function Nav(): JSX.Element {
           variants={navTextContainer}
           initial="initial"
           animate={!loading && 'animate'}
-          className={styles.navText}>
+          className={styles.navText}
+        >
           {NAV_TEXT.map((item, index) => {
             return (
               <motion.a
@@ -105,7 +108,8 @@ export default function Nav(): JSX.Element {
                 }}
                 onMouseLeave={handleMouseOut}
                 href={item.link}
-                key={index}>
+                key={index}
+              >
                 {item.text}
               </motion.a>
             );

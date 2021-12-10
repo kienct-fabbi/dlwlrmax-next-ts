@@ -61,7 +61,8 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <HomeIcon />
             </motion.div>
           )}
@@ -72,7 +73,8 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <ClothesIcon />
             </motion.div>
           )}
@@ -83,7 +85,8 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <JewelryIcon />
             </motion.div>
           )}
@@ -95,7 +98,8 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}>
+              transition={{ type: 'spring', duration: 0.6 }}
+            >
               <AboutIcon />
             </motion.div>
           )}
