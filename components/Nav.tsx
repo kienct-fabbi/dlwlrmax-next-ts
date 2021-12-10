@@ -35,6 +35,28 @@ export default function Nav(): JSX.Element {
     const elementName = e.currentTarget.textContent;
     dispatch(change({ state: 'navHover', position: newPosition, style: elementName }));
   };
+  const handleHoverImage = (e: React.MouseEvent) => {
+    const $element = e.currentTarget as HTMLDivElement;
+    const top = $element.getBoundingClientRect().top;
+    const left = $element.getBoundingClientRect().left;
+    const width = $element.offsetWidth;
+    const height = $element.offsetHeight;
+    $element.style.position = 'relative';
+    $element.style.zIndex = '99';
+    dispatch(
+      change({
+        state: 'imageHover',
+        style: 'coverImage',
+        size: { width: width, height: height },
+        position: { x: left, y: top }
+      })
+    );
+  };
+  const handleLeaveHoverImage = (e: React.MouseEvent) => {
+    const $element = e.currentTarget as HTMLDivElement;
+    $element.style.zIndex = '0';
+    dispatch(change({ state: 'normal', style: 'normal', size: { width: 35, height: 35 } }));
+  };
   return (
     <section>
       <div className={styles.container}>
@@ -43,9 +65,14 @@ export default function Nav(): JSX.Element {
             variants={imageContainer}
             custom={0.3}
             initial="initial"
-            animate={!loading && 'animate'}
-          >
-            <motion.img variants={imageAnimation} src="../img/1.jpeg" alt="image" />
+            animate={!loading && 'animate'}>
+            <motion.img
+              onMouseOver={handleHoverImage}
+              onMouseLeave={handleLeaveHoverImage}
+              variants={imageAnimation}
+              src="../img/1.jpeg"
+              alt="image"
+            />
             <motion.img variants={imageAnimation} src="../img/4.jpg" alt="image" />
             <motion.img variants={imageAnimation} src="../img/7.jpg" alt="image" />
           </motion.div>
@@ -53,8 +80,7 @@ export default function Nav(): JSX.Element {
             custom={0.6}
             variants={imageContainer}
             initial="initial"
-            animate={!loading && 'animate'}
-          >
+            animate={!loading && 'animate'}>
             <motion.img
               variants={imageAnimationReverse}
               src="../img/E9I3Uk9VgAQDXzx.jpg"
@@ -68,8 +94,7 @@ export default function Nav(): JSX.Element {
           variants={navTextContainer}
           initial="initial"
           animate={!loading && 'animate'}
-          className={styles.navText}
-        >
+          className={styles.navText}>
           {NAV_TEXT.map((item, index) => {
             return (
               <motion.a
@@ -80,8 +105,7 @@ export default function Nav(): JSX.Element {
                 }}
                 onMouseLeave={handleMouseOut}
                 href={item.link}
-                key={index}
-              >
+                key={index}>
                 {item.text}
               </motion.a>
             );

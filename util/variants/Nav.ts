@@ -70,7 +70,7 @@ export const navTextContainer = {
   animate: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.06,
       delayChildren: 1.2
     }
   }

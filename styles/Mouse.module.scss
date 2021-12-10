@@ -17,4 +17,8 @@
   &.navHover {
     @include size(50px, 50px);
   }
+  &.imageHover {
+    border-radius: 0;
+    background-color: transparent;
+  }
 }

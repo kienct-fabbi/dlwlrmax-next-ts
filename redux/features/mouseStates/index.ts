@@ -5,6 +5,10 @@ export const changeMouseSlice = createSlice({
   initialState: {
     style: 'normal',
     state: 'normal',
+    size: {
+      width: 35,
+      height: 35
+    },
     position: {
       x: 0,
       y: 0

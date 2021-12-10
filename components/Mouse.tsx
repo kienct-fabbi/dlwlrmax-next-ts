@@ -41,6 +41,11 @@ export default function Mouse(): JSX.Element {
         case 'linkHover':
           mouseEle.current.style.transform = `translate3d(${mouseState.position.x}px,${mouseState.position.y}px,0)`;
           break;
+        case 'imageHover':
+          mouseEle.current.style.transform = `translate3d(${mouseState.position.x}px,${mouseState.position.y}px,0)`;
+          mouseEle.current.style.width = mouseState.size.width + 'px';
+          mouseEle.current.style.height = mouseState.size.height + 'px';
+          break;
         default:
           mouseEle.current.style.transform = `translate3d(${x - 10}px,${y - 10}px,0)`;
           break;
@@ -56,8 +61,7 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}
-            >
+              transition={{ type: 'spring', duration: 0.6 }}>
               <HomeIcon />
             </motion.div>
           )}
@@ -68,8 +72,7 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}
-            >
+              transition={{ type: 'spring', duration: 0.6 }}>
               <ClothesIcon />
             </motion.div>
           )}
@@ -80,8 +83,7 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}
-            >
+              transition={{ type: 'spring', duration: 0.6 }}>
               <JewelryIcon />
             </motion.div>
           )}
@@ -93,8 +95,7 @@ export default function Mouse(): JSX.Element {
               variants={nav_animation}
               initial="initial"
               animate="animate"
-              transition={{ type: 'spring', duration: 0.6 }}
-            >
+              transition={{ type: 'spring', duration: 0.6 }}>
               <AboutIcon />
             </motion.div>
           )}
