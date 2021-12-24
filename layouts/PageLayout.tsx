@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useEffect } from 'react';
-import Mouse from '../components/Mouse';
+import Mouse from '../components/Mouse/Mouse';
 import useWindowSize from '../hooks/useWindowsSize';
 import styles from '../styles/Common.module.scss';
 import { SCROLL_CONFIG } from '../util/Interfaces';

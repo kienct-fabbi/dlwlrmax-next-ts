@@ -4,10 +4,10 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 import ItemJewelry from '../components/ItemJewelry';
 import PageLayout from '../layouts/PageLayout';
-import Link from 'next/link';
 import Nav from '../components/Nav';
 import { useDispatch } from 'react-redux';
 import { change } from '../redux/features/mouseStates';
+import ClothesSection from '../components/Home/ClothesSection';
 const Home: NextPage = () => {
   const dispatch = useDispatch();
   const handleHoverClothes = (e: React.MouseEvent) => {
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
       y: top + height / 2 - 25,
       x: left + width + 20
     };
-    dispatch(change({ state: 'linkHover', style: 'clothesHover', position: NEW_POSITION }));
+    dispatch(change({ state: 'bigTitleHover', style: 'bigTitleHover', position: NEW_POSITION }));
   };
   const handleLeaveClothes = () => {
     dispatch(change({ state: 'normal', style: 'normal' }));
@@ -35,30 +35,10 @@ const Home: NextPage = () => {
         </Head>
         <main>
           <Nav />
-          <section className={styles.clothes}>
-            <div className={styles.lImage}>
-              <Link href="/clothes">
-                <a
-                  className={styles.title}
-                  onMouseEnter={handleHoverClothes}
-                  onMouseLeave={handleLeaveClothes}
-                >
-                  Clothes
-                </a>
-              </Link>
-              <div className={styles.image}>
-                <div className={styles.illuTitle}>Clothes</div>
-              </div>
-            </div>
-            <div className={styles.rImage}>
-              <a href="/" className={styles.title}>
-                IU x NEW BALANCE
-              </a>
-              <div className={styles.image}>
-                <img src="../img/1.jpg" alt="" />
-              </div>
-            </div>
-          </section>
+          <ClothesSection
+            handleLeaveClothes={handleLeaveClothes}
+            handleHoverClothes={handleHoverClothes}
+          />
           <section className={styles.jewelry}>
             <div className={styles.lContent}>
               <a href="/" className={styles.title}>

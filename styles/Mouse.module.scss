@@ -14,7 +14,19 @@
   transition: 0.2s ease all;
   overflow: hidden;
   @include flex();
-  &.navHover {
+  &.linkHover {
     @include size(50px, 50px);
+  }
+  &.bigTitleHover {
+    @include size(300px, 400px);
+    border-radius: 3px;
+    background: transparent;
+    opacity: 0.9;
+    .clothesSlide {
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }
