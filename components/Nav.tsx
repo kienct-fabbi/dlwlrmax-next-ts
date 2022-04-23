@@ -44,22 +44,32 @@ export default function Nav(): JSX.Element {
             custom={0.3}
             initial="initial"
             animate={!loading && 'animate'}>
-            <motion.img variants={imageAnimation} src="../img/1.jpeg" alt="image" />
-            <motion.img variants={imageAnimation} src="../img/4.jpg" alt="image" />
-            <motion.img variants={imageAnimation} src="../img/7.jpg" alt="image" />
+            <motion.div variants={imageAnimation} className={styles.imageWrapper}>
+              <img src="../img/5.jpg" alt="image" />
+            </motion.div>
+            <motion.div variants={imageAnimation} className={styles.imageWrapper}>
+              <img src="../img/4.jpg" alt="image" />
+            </motion.div>
+            <motion.div variants={imageAnimation} className={styles.imageWrapper}>
+              <img src="../img/7.jpg" alt="image" />
+            </motion.div>
           </motion.div>
           <motion.div
             custom={0.6}
             variants={imageContainer}
             initial="initial"
             animate={!loading && 'animate'}>
-            <motion.img
+            <motion.div variants={imageAnimationReverse} className={styles.imageWrapper}>
+              <img src="../img/FMweg6pVEAEPFKI.jfif" alt="image" />
+            </motion.div>
+            <motion.div
               variants={imageAnimationReverse}
-              src="../img/E9I3Uk9VgAQDXzx.jpg"
-              alt="image"
-            />
-            <motion.img variants={imageAnimationReverse} src="../img/5.jpg" alt="image" />
-            <motion.img variants={imageAnimationReverse} src="../img/2.jpeg" alt="image" />
+              className={`${styles.imageWrapper} ${styles.landscape}`}>
+              <img src="../img/FMwh5a5UcAIxaXO.jfif" alt="image" />
+            </motion.div>
+            <motion.div variants={imageAnimationReverse} className={styles.imageWrapper}>
+              <img src="../img/New Balance形象代言人IU_IWD_CT302OA (4).jpeg" alt="image" />
+            </motion.div>
           </motion.div>
         </div>
         <motion.div
