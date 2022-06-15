@@ -1,3 +1,4 @@
+import { Router } from 'next/dist/client/router';
 import { useEffect, useState } from 'react';
 import { MOUSE_POSITION } from '../util/Interfaces';
 import useWindowSize from './useWindowsSize';
@@ -9,7 +10,7 @@ export default function useMousePosition(): MOUSE_POSITION {
     y: 0
   });
   const moveHandler = (e: MouseEvent) => {
-    setMousePosition({ ...mousePos, x: e.clientX, y: e.clientY });
+    setMousePosition({ ...mousePos, x: e.clientX, y: e.clientY + window.scrollY });
   };
   useEffect(() => {
     if (mousePos.x === 0 && mousePos.y === 0) {
@@ -24,6 +25,5 @@ export default function useMousePosition(): MOUSE_POSITION {
     document.body.addEventListener('mousemove', moveHandler);
     return () => document.body.removeEventListener('mousemove', moveHandler);
   }, []);
-
   return mousePos;
 }

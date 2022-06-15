@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { change } from '../redux/features/mouseStates';
 import ClothesSection from '../components/Home/ClothesSection';
 import JewelrySection from '../components/Home/JewelrySection';
+import { motion } from 'framer-motion';
 const Home: NextPage = () => {
   const dispatch = useDispatch();
   const handleHoverClothes = (e: React.MouseEvent) => {
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
     const height = $element.offsetHeight;
     const width = $element.offsetWidth;
     const NEW_POSITION = {
-      y: top + height / 2 - 25,
+      y: top + height / 2 - 25 + window.scrollY,
       x: left + width + 20
     };
     dispatch(
@@ -34,7 +35,7 @@ const Home: NextPage = () => {
     const height = $element.offsetHeight;
     const width = $element.offsetWidth;
     const NEW_POSITION = {
-      y: top + height / 2 - 25,
+      y: top + height / 2 - 25 + window.scrollY,
       x: left + width + 20
     };
     dispatch(
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
   };
   return (
     <PageLayout>
-      <div className={styles.home}>
+      <motion.div exit={{ opacity: 0 }} className={styles.home}>
         <Head>
           <title>Dlwlrmax - Complement your flawless beauty</title>
           <meta name="description" content="Complement your flawless beauty" />
@@ -63,7 +64,7 @@ const Home: NextPage = () => {
             handleLeaveJewelry={handleLeaveJewelry}
           />
         </main>
-      </div>
+      </motion.div>
     </PageLayout>
   );
 };

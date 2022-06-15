@@ -29,7 +29,7 @@ export default function Nav(): JSX.Element {
     const offLeft = (ele as HTMLDivElement).getBoundingClientRect().left;
     // const translateX = (ele as HTMLDivElement).style.transform.replace(/([a-z])\w+[()]/g, '');
     const newPosition = {
-      y: offTop + height / 2 - 25,
+      y: offTop + height / 2 - 25 + window.scrollY,
       x: offLeft + width + 20
     };
     const elementName = e.currentTarget.textContent;

@@ -44,8 +44,8 @@ export default function PageLayout({ children }: Props): JSX.Element {
 
   return (
     <div className={styles.App}>
-      <Mouse />
       <div ref={scrollContainer} className={styles.scroll}>
+        <Mouse />
         {children}
       </div>
     </div>

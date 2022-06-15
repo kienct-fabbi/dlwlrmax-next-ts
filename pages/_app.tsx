@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import Loader from '../components/Loader';
 import store from '../redux/store';
 import { Provider } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -19,7 +20,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <Provider store={store}>
         <Loader isLoading={isLoading} />
-        <Component {...pageProps} />
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} />
+        </AnimatePresence>
       </Provider>
     </>
   );

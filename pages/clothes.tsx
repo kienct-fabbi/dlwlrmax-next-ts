@@ -3,11 +3,12 @@ import React from 'react';
 import Head from 'next/head';
 import styles from '../styles/Clothes.module.scss';
 import PageLayout from '../layouts/PageLayout';
-import ItemClothes from '../components/ItemClothes';
+import { motion } from 'framer-motion';
+import Link from 'next/dist/client/link';
 const Clothes: NextPage = () => {
   return (
     <PageLayout>
-      <div className={styles.clothes}>
+      <motion.div exit={{ opacity: 0 }} className={styles.clothes}>
         <Head>
           <title>Dlwlrmax - Complement your flawless beauty</title>
           <meta name="description" content="Complement your flawless beauty" />
@@ -15,11 +16,10 @@ const Clothes: NextPage = () => {
         </Head>
         <main>
           <section className={styles.showcase}>
-            <ItemClothes />
-            <ItemClothes />
+            <Link href="/">Back</Link>
           </section>
         </main>
-      </div>
+      </motion.div>
     </PageLayout>
   );
 };
