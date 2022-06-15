@@ -17,12 +17,23 @@
   &.linkHover {
     @include size(50px, 50px);
   }
-  &.bigTitleHover {
+  &.clothesTitleHover,
+  &.jewelryTitleHover {
     @include size(300px, 400px);
-    border-radius: 3px;
+    border-radius: 7px;
     background: transparent;
-    opacity: 0.9;
+    opacity: 1;
+  }
+  &.clothesTitleHover {
     .clothesSlide {
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &.jewelryTitleHover {
+    .jewelrySlide {
       img {
         width: 100%;
         object-fit: cover;
