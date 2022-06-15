@@ -4,7 +4,7 @@ export const NAV_TEXT = [
     text: 'Dlwlrma'
   },
   {
-    link: '#',
+    link: 'clothes',
     text: 'Clothes'
   },
   {
